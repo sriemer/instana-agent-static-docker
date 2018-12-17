@@ -17,5 +17,6 @@ Download Static Agent
 
 The static image can be found on containers.instana.io and can be downloaded using the following commands:
 
-docker login containrs.instana.io -u _ -p <agent_key>
+docker login containers.instana.io -u _ -p <agent_key>
+
 docker pull containers.instana.io/instana/release/agent-static:latest
