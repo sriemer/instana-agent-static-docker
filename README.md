@@ -12,8 +12,11 @@ docker build ./ --build-arg FTP_PROXY=${INSTANA_AGENT_KEY} --no-cache
 
 FTP_PROXY is being abused to pass in the agent key for the package download during docker build, we are doing this until docker build time secrets issue is resolved: [issue GH33343](https://github.com/moby/moby/issues/33343)
 
-Docker Hub
+Download Static Agent
 ==========
 
-The static image can be found on docker hub [https://hub.docker.com/r/instana/agent-static/](https://hub.docker.com/r/instana/agent-static)
-Request access to this image via your Instana Sales Engineer.
+The static image can be found on containers.instana.io and can be downloaded using the following commands:
+
+docker login containers.instana.io -u _ -p <agent_key>
+
+docker pull containers.instana.io/instana/release/agent-static:latest
