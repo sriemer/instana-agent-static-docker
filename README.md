@@ -19,4 +19,4 @@ The static image can be found on containers.instana.io and can be downloaded usi
 
 docker login containers.instana.io -u _ -p <agent_key>
 
-docker pull containers.instana.io/instana/release/agent-static:latest
+docker pull containers.instana.io/instana/release/agent/static:latest
