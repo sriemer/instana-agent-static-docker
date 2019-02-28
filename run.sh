@@ -47,8 +47,12 @@ cat /root/com.instana.agent.main.sender.Backend.cfg.tmpl | gomplate > \
 
 echo "origin = static_docker" >> /opt/instana/agent/etc/instana/com.instana.agent.bootstrap.AgentBootstrap.cfg
 
-if [[ "${INSTANA_AGENT_HTTP_LISTEN}" != "" ]]; then
+if [ -z "${INSTANA_AGENT_HTTP_LISTEN}" ]; then
   echo -e "\nhttp.listen = ${INSTANA_AGENT_HTTP_LISTEN}" >> /opt/instana/agent/etc/instana/com.instana.agent.main.config.Agent.cfg
+fi
+
+if [ -z "${INSTANA_AGENT_MODE}" ]; then
+  echo -e "\nmode = ${INSTANA_AGENT_MODE}" >> /opt/instana/agent/etc/instana/com.instana.agent.main.config.Agent.cfg
 fi
 
 if [ -d /host/proc ]; then
