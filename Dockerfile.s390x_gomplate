@@ -1,0 +1,18 @@
+FROM s390x/ubuntu:18.04
+
+ENV LANG=C.UTF-8
+
+RUN apt-get update && \
+    apt-get install -y wget golang make unzip && \
+    mkdir -p /root/go/src/github.com/hairyhenderson && \
+    cd /root/go/src/github.com/hairyhenderson && \
+    wget https://github.com/hairyhenderson/gomplate/archive/master.zip && \
+    unzip master.zip && mv gomplate-master gomplate && \
+    cd gomplate/ && make && cp bin/gomplate /usr/bin/gomplate && \
+    gomplate -v
+
+WORKDIR /root
+
+ENTRYPOINT ["/bin/bash"]
+
+# get the gomplate binary by running `./build_s390x_gomplate.sh`
